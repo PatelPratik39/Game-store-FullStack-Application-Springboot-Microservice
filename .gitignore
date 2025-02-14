@@ -1,3 +1,8 @@
+
+#ignoring .idea folder
+.idea
+./resources
+
 # Compiled class file
 *.class
 
