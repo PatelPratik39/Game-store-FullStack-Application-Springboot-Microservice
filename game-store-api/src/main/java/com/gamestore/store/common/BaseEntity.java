@@ -20,9 +20,9 @@ public class BaseEntity {
     private String id;
 
 //    Auditing Attributes
-//    private String createdBy;
-//    private String lastModifiedBy;
-//    private LocalDateTime createdDate;
-//    private LocalDateTime lastModifiedDate;
+    private String createdBy;
+    private String lastModifiedBy;
+    private LocalDateTime createdDate;
+    private LocalDateTime lastModifiedDate;
 
 }
