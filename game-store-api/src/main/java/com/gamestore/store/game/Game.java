@@ -1,15 +1,16 @@
 package com.gamestore.store.game;
 
 import com.gamestore.store.category.Category;
+import com.gamestore.store.comment.Comment;
 import com.gamestore.store.common.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.ManyToOne;
+import com.gamestore.store.wishlist.WishList;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,5 +25,24 @@ public class Game extends BaseEntity {
     private String coverPicture;
 
     @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "game")
+    private List<Comment> comments;
+
+    @ManyToMany
+    @JoinTable(name = "game_wishlist",joinColumns = {
+            @JoinColumn(
+                    name = "game_id"
+            )
+    }, inverseJoinColumns = {
+            @JoinColumn(name = "wishlist_id")
+    })
+    private List<WishList> wishList;
+
+    public void addWishList(WishList wishList) {
+        this.wishList.add(wishList);
+        wishList.getGames().add(this);
+    }
 }

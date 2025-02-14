@@ -1,9 +1,8 @@
 package com.gamestore.store.notification;
 
 import com.gamestore.store.common.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import com.gamestore.store.user.User;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +21,9 @@ public class Notification extends BaseEntity {
     private NotificationLevel level;
     @Enumerated(EnumType.STRING)
     private NotificationStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }
