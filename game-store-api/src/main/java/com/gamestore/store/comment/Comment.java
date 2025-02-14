@@ -1,5 +1,7 @@
 package com.gamestore.store.comment;
 
+import com.gamestore.store.common.BaseEntity;
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Comment {
+@Entity
+public class Comment extends BaseEntity {
     private String comment;
 
 }

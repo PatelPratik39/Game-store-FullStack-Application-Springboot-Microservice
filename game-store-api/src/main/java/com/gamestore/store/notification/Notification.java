@@ -1,5 +1,7 @@
 package com.gamestore.store.notification;
 
+import com.gamestore.store.common.BaseEntity;
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
@@ -11,7 +13,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Notification {
+@Entity
+public class Notification extends BaseEntity {
 
     private String message;
     private String receiver;
