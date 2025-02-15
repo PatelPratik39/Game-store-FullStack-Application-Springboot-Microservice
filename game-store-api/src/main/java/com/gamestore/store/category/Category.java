@@ -2,14 +2,13 @@ package com.gamestore.store.category;
 
 import com.gamestore.store.common.BaseEntity;
 import com.gamestore.store.game.Game;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.List;
 
 @Getter
@@ -17,6 +16,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@NamedQuery(name = " Category.findByName",
+        query = "SELECT c from Category c " +
+                "WHERE c.name LIKE lower (:name)" +
+                "ORDER BY c.name ASC")
+
 public class Category extends BaseEntity {
 
     private String name;
